@@ -119,6 +119,11 @@ describe("Barista", () => {
   expect(barista.orderCoffee("Cappuccino")).toBeNull();
   });
 
+  
+  it("retourne null lorsqu'on commande un café qui n'existe pas", () => {
+  expect(barista.orderCoffee("Inconnu")).toBeNull();
+  });
+
   it("retourne le prix lorsqu'un café est commandé", () => {
     barista.addCoffee(cappuccino);
     barista.addIngredient("café", 5);
