@@ -111,6 +111,13 @@ describe("Barista", () => {
 
     expect(preparation).toBe(false);
   });
+  
+  it("retourne null lorsque les ingrédients sont insuffisants", () => {
+  barista.addCoffee(cappuccino);
+  barista.addIngredient("café", 5);
+
+  expect(barista.orderCoffee("Cappuccino")).toBeNull();
+  });
 
   it("retourne le prix lorsqu'un café est commandé", () => {
     barista.addCoffee(cappuccino);
@@ -119,4 +126,12 @@ describe("Barista", () => {
 
     expect(barista.orderCoffee(cappuccino.name)).toBe(35.5);
   });
+
+  it("ajouter de la quantité à un ingrédient déjà là dans le stock du Barista (sans dupliquer)", () => {
+  barista.addIngredient("café", 5);
+  barista.addIngredient("café", 3);
+
+  expect(barista.ingredients).toHaveLength(1);
+  expect(barista.ingredients[0].quantity).toBe(8);
+});
 });
