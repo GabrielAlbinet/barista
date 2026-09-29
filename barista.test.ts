@@ -98,8 +98,8 @@ describe("Barista", () => {
     const preparation = barista.makeCoffee(cappuccino);
 
     expect(preparation).toBe(true);
-    expect(barista.ingredients.find(i => i.name === "café")?.quantity).toBe(4);
-    expect(barista.ingredients.find(i => i.name === "lait")?.quantity).toBe(7);
+    expect(barista.ingredients[0].quantity).toBe(4);
+    expect(barista.ingredients[1].quantity).toBe(7);
 
   });
 
@@ -116,7 +116,7 @@ describe("Barista", () => {
   barista.addCoffee(cappuccino);
   barista.addIngredient("café", 5);
 
-  expect(barista.orderCoffee("Cappuccino")).toBeNull();
+  expect(barista.orderCoffee(cappuccino.name)).toBeNull();
   });
 
   
